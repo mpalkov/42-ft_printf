@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/20 16:49:42 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/22 17:24:48 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,9 @@ int static	ft_gothrough(int *count, t_vars *vars)
 	while (vars->strn[vars->pos_s])
         {
                 vars->format = ft_strchr((const char *)vars->validformat, (int)strn[vars->pos_s + 1])
-                if (vars->strn[vars->pos_s] == '%' && !vars->format)
-		{
-                        return(-1);
-                }
+				if (vars->strn[vars->pos_s] == '%' && !vars->format)
+					return(-1);
+                
 		if (vars->strn[vars->pos_s] == '%' && vars->format)
                         ft_printit();
                 if (vars->strn[vars->pos_s] != '%')
@@ -58,7 +57,9 @@ int	ft_printf(const char *str, ...)
 //revisar si puedo hacerlo asi (siguiente linea de codigo)  o tengo que usar ft_strcpy.
 //en principio si se puede hacer y te leva a la misma direccion del string original.
 	vars.strn = (char *)str;
-	while (strn[vars.pos_s])
+
+	//lo siguiente estoy recodificando al ft_gothrough, codigo desactualizado.
+	while (vasr.strn[vars.pos_s])
 	{
 		if (vars.strn[vars.pos_s++] != '%')
 			ft_putchar_fd(
