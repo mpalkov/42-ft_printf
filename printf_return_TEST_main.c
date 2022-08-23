@@ -6,13 +6,15 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 14:37:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/20 14:47:59 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/23 13:26:53 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
 int	main(void)
-{
-	return (printf(NULL));
+{	
+	int a;
+	a = printf("%");
+	return (a);
 }
