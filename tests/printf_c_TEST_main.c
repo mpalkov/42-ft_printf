@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_return_TEST_main.c                          :+:      :+:    :+:   */
+/*   printf_c_TEST_main.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/20 14:37:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/23 13:26:53 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/08/25 14:35:21 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/08/25 16:59:19 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/ft_printf.h"
 #include <stdio.h>
 
+int ft_printf(const char *str, ...);
+
 int	main(void)
-{	
-	int a;
-	a = printf("%");
-	return (a);
+{	int	a;
+	printf("...%c...\n", 'X');
+	a = ft_printf(".%c.%%.", 'X');
+	printf("\n%d\n", a);
+	return (0);
 }
