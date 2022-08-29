@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:16:47 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/23 16:25:04 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/29 14:34:49 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putstr(char *s)
 {
-	return (ft_putstr_fd(&s, STDOUT_FILENO));
+	return (ft_putstr_fd(s, STDOUT_FILENO));
 }
