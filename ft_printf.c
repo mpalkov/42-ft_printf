@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/30 12:48:28 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/30 17:47:39 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include <stdio.h>
 
 int ft_print_unsint(t_vars *vars, long nbr);
+int	ft_print_HEX_case(t_vars *vars, long nbr);
+
 
 int	ft_print_char(t_vars *vars, char c)
 {
@@ -96,6 +98,51 @@ int ft_print_unsint(t_vars *vars, long nbr)
 	return (vars->lastreturn);
 }
 
+int	ft_pf_x(t_vars *vars)
+{
+	long	nbr;
+
+	nbr = va_arg(vars->args, long);
+	if (ft_print_HEX_case(vars, nbr) == -1)
+		return (-1);
+
+	return(vars->lastreturn);
+}	
+
+int	ft_print_HEX_case(t_vars *vars, long nbr)
+{
+
+	if (nbr > 16)
+	{
+		ft_print_HEX_case(vars, nbr / 16);
+		ft_print_HEX_case(vars, nbr % 16);
+	}
+	else
+	{
+		if (nbr <= 9)
+		{
+			if (ft_print_char(vars, '0' + nbr) == -1)
+				return (-1);
+		}
+		else
+		{
+			// vars->caseflag is char 'A' or 'a' so I can use it directly 
+			if (ft_print_char(vars, vars->caseflag + nbr - 10))
+				return (-1);
+		}
+	}
+	return (vars->lastreturn);
+}
+
+int	ft_pf_p(t_vars *vars)
+{
+	long	nbr;
+
+	nbr  = va_arg(vars->args, long);
+	if (nbr == 0)
+		ft_print_
+}
+
 
 static int	ft_printcheck(t_vars *vars)
 {
@@ -109,6 +156,18 @@ static int	ft_printcheck(t_vars *vars)
 		return (ft_pf_d(vars));
 	else if (*vars->format == 'u')
 		return (ft_pf_u(vars));
+	else if (*vars->format == 'x')
+	{
+		vars->caseflag = 'a';		
+		return (ft_pf_x(vars));
+	}
+	else if (*vars->format == 'X')
+	{
+		vars->caseflag = 'A';
+		return (ft_pf_x(vars));
+	}
+	else if (*vars->format == 'p')
+		return (ft_pf_p(vars));
 	return (0);
 }
 

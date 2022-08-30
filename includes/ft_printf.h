@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/25 17:26:20 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/30 16:46:29 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-# define VALIDFORMAT "cspdiuxX%" 
+# define VALIDFORMAT "cspdiuxX%"
+# define HEX_LOWERCHARSET "0123456789abcdef"
+# define HEX_UPPERCASECHARSET "0123456789ABCDEF"
 typedef struct	s_vars
 {
 	char	*format;
@@ -25,6 +27,7 @@ typedef struct	s_vars
 	char	*strn;
 	va_list	args;
 	int		lastreturn;
+	char	caseflag;
 }				t_vars;
 
 #endif
