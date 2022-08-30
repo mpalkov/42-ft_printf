@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/29 17:47:17 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/30 12:48:28 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int ft_print_unsint(t_vars *vars, long nbr)
 	}
 	digit[pos] = nbr % 10 + '0';
 	while (pos >= 0)
-		if (ft_print_char(vars, digit[pos--] == -1))
+		if (ft_print_char(vars, digit[pos--]) == -1)
 			return (-1);
 	return (vars->lastreturn);
 }
