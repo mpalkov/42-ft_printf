@@ -1,35 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/06/16 12:04:44 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/08/01 13:16:24 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "libft.h"
 
-# define VALIDFORMAT "cspdiuxX%"
-
-typedef struct	s_vars
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
+	int		i;
+	char	*str;
+	char	*lasttemp;
 
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
-
-#endif
+	i = 0;
+	str = (char *)s;
+	lasttemp = 0;
+	while (str[i] != 0)
+	{
+		if (str[i] == (char)c)
+			lasttemp = &str[i];
+		i++;
+		if (str[i] == (char)c)
+			lasttemp = &str[i];
+	}
+	if (str[i] == (char)c)
+		lasttemp = &str[i];
+	return (lasttemp);
+}

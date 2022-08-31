@@ -1,35 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/05/13 12:24:16 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/05/17 11:28:01 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "libft.h"
 
-# define VALIDFORMAT "cspdiuxX%"
-
-typedef struct	s_vars
+size_t	ft_strlen(const char *s)
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
+	size_t	i;
 
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
+	i = 0;
+	while (s[i] != 0)
+		i++;
+	return (i);
+}
 
-#endif
+// strlen (man strlen) returns length of a string as size_t data type.
+// This type is defined in both of the system headers unistd.h and stdlib.h
+// using size_t does not work without these headers or without defining it
+// yourself.

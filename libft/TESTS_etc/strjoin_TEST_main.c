@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   strjoin_TEST_main.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/07/11 12:21:26 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/07/11 12:50:44 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "libft.h"
+#include <stdio.h>
+#include <string.h>
 
-# define VALIDFORMAT "cspdiuxX%"
-
-typedef struct	s_vars
+int	main ()
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
+	char	*s1 = "Hello! My name is";
+	char	*s2 = "";
+	char	*s3 = " 42.";
+	char	*result = ft_strjoin(ft_strjoin(s1, s2), s3);
 
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
+	if (!strcmp(result, "Hello! My name is 42."))
+	{
+		free(result);
+		printf("OK\n");
+		return (0);
+	}
+	printf("KO\nExpected: Hello! My name is 42.\nReturned: %s\n", result);
+	free(result);
+	return (0);
+}
 
-#endif
+
+
+

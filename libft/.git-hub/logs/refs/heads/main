@@ -1,0 +1,8 @@
+0000000000000000000000000000000000000000 e13bda0f36210cc6a6f951c143f8c32a576918aa Martin Palkov <mpalkov@student.42barcelona.com> 1661008878 +0200	commit (initial): first-commit
+e13bda0f36210cc6a6f951c143f8c32a576918aa e13bda0f36210cc6a6f951c143f8c32a576918aa Martin Palkov <mpalkov@student.42barcelona.com> 1661008894 +0200	Branch: renamed refs/heads/master to refs/heads/main
+e13bda0f36210cc6a6f951c143f8c32a576918aa 442a4b710ede25c3e64dabc036f12383ab09d335 Martin Palkov <mpalkov@student.42barcelona.com> 1661165684 +0200	commit: v01 - Validated version, passed STRICT tests
+442a4b710ede25c3e64dabc036f12383ab09d335 b07c69185ced9c3b7a3551c1a5866ad3dac1995d Martin Palkov <mpalkov@student.42barcelona.com> 1661167242 +0200	commit: Updated README.md file
+b07c69185ced9c3b7a3551c1a5866ad3dac1995d a6527ef50da052fb344bd6eb401b4b14df579add Martin Palkov <mpalkov@student.42barcelona.com> 1661270037 +0200	commit: modified ft_put* fuctions to return int and return -1 on error.
+a6527ef50da052fb344bd6eb401b4b14df579add 456ca5caabb7a5e6d62155c752dbb8cc7c44b4b9 Martin Palkov <mpalkov@student.42barcelona.com> 1661270338 +0200	commit: functions ft_put* writes directly to STDOUT_FILENO fd
+456ca5caabb7a5e6d62155c752dbb8cc7c44b4b9 82c563cd5f277a8bc7875eb8df0154cf24fc35e3 Martin Palkov <mpalkov@student.42barcelona.com> 1661356549 +0200	commit: norm corrected
+82c563cd5f277a8bc7875eb8df0154cf24fc35e3 b6cddf39787bbe60b38f03d33f84adce8493b396 Martin Palkov <mpalkov@student.42barcelona.com> 1661777036 +0200	commit: removed &. - ncompatible pointer types passing 'char **' to parameter of type 'char *';

@@ -1,0 +1,1 @@
+removed &. - ncompatible pointer types passing 'char **' to parameter of type 'char *';

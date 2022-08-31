@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/05/09 12:55:49 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/05/17 11:42:29 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "libft.h"
 
-# define VALIDFORMAT "cspdiuxX%"
-
-typedef struct	s_vars
+int	ft_isalpha(int c)
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
-
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
-
-#endif
+	if (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'))
+		return (1);
+	return (0);
+}

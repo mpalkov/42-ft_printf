@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/07/26 14:54:29 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/07/26 16:52:42 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "libft.h"
 
-# define VALIDFORMAT "cspdiuxX%"
-
-typedef struct	s_vars
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
+	t_list	*temp;
 
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
+	if (!(*lst))
+		*lst = new;
+	else
+	{
+		temp = *lst;
+		while (temp->next)
+			temp = temp->next;
+		temp->next = new;
+	}
+}
 
-#endif
+// Adds the node ’new’ at the end of the list.
+//
+// Parameters:
+// lst: The address of a pointer to the first link of a list. 
+// new: The address of a pointer to the node to be added to the list.

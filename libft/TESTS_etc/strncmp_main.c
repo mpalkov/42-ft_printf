@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   strncmp_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/06/10 18:05:33 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/06/15 16:36:45 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include <string.h>
+#include <stdio.h>
+#include "libft.h"
 
-# define VALIDFORMAT "cspdiuxX%"
-
-typedef struct	s_vars
+int	main(void)
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
+	const char	s1[] = "saad0snn";
+	const char	s2[] = "saaazx";
+	const char *ptr_s1;
+	const char *ptr_s2;
+	ptr_s1 = &s1[0];
+	ptr_s2 = &s2[0];
 
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
-
-#endif
+	printf("s1: %s\ns2: %s\nstrncmp: %d\n", s1, s2, strncmp(ptr_s1, ptr_s2, 8));
+	printf("ft_st...: %d\n", ft_strncmp(ptr_s1, ptr_s2, 8));
+	return (0);
+}

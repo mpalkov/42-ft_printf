@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   lstsize_TEST_main.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/07/25 15:43:29 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/07/26 16:35:44 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "libft.h"
 
-# define VALIDFORMAT "cspdiuxX%"
-
-typedef struct	s_vars
+int main(void)
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
+	t_list	*a;
+	t_list	*b;
+	t_list	*c;
+	t_list	*d;
+	
+	a = (t_list *)malloc(sizeof(t_list));
+	1->content = "AAAAA";
+	a->next = *b;
 
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
 
-#endif
+
+	
+
+
+/*		if (i = 4)
+			((t_list *)i)->next = NULL;
+		else
+			((t_list *)i)->next = ((t_list *)i)->((t_list *)(i + 1));
+	} */
+	printf("lstsize = %d", i);
+	return (0);
+}

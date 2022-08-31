@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   itoaTEST.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:07:32 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/07/16 17:47:00 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/07/18 14:59:20 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
-# include <unistd.h>
-# include <stdarg.h>
+#include "libft.h"
+#include <stdio.h>
 
-# define VALIDFORMAT "cspdiuxX%"
+static char	*ft_itoatest(int n)
+{ 
+	char	*num;
 
-typedef struct	s_vars
+	printf("----- TEST\n\nn = %d\n", n);
+	num = ft_itoa(n);			
+	printf("ft_toa = %s\n\n", num);
+	return (num);
+}
+
+int	main ()
 {
-	char	*format;
-	int		pos_s;
-	int		printcount;
-	char	*strn;
-	va_list	args;
-	int		lastreturn;
-	char	caseflag;
-}				t_vars;
+	char	*num;
 
-int	ft_printf(const char *str, ...);
-int	ft_print_char(t_vars *vars, char c);
-static int	ft_gothrough(t_vars *vars);
+	num = ft_itoatest(42);
+	num = ft_itoatest(0);
+	num = ft_itoatest(-42);
+	num = ft_itoatest(-2147483648);
+	num = ft_itoatest(2147483647);
 
-#endif
+	return (0);
+}
