@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/25 14:35:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/30 16:58:37 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/31 12:34:28 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ int	main(void)
 
 	ft_printf("----- HEX  %%x %%X %%p ------\n\n");
 	ft_printf("%%x of 999999 = %x\n%%x of 999999 = %X\n", 999999, 999999);
-	
+
+
+	ft_printf("------ %%p ---------\n\n");
+	printf("%%p sys printf %%p = %p\n", NULL);
+	ft_printf("%%p  ft_printf %%p = %p\n", NULL);
+		
 	return (0);
 }

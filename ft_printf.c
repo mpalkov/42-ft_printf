@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/30 17:47:39 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/08/31 13:40:16 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,20 @@ int	ft_pf_c(t_vars *vars)
 	c = va_arg(vars->args, int);
 	return (ft_print_char(vars, (char)c));
 }
+
+int	ft_print_str(t_vars *vars, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_print_char(vars, str[i++]) == -1)
+			return (-1);
+	}
+	return (vars->lastreturn);
+}
+
 
 int	ft_pf_perc(t_vars *vars)
 {
@@ -140,7 +154,19 @@ int	ft_pf_p(t_vars *vars)
 
 	nbr  = va_arg(vars->args, long);
 	if (nbr == 0)
-		ft_print_
+	{
+		if (ft_print_str(vars, "0x0") == -1)
+			return (-1);
+	}
+	else
+	{
+		vars->caseflag = 'a';
+		if (ft_print_str(vars, "0x") == -1)
+			return (-1);
+		if (ft_print_HEX_case(vars, nbr) == -1)
+			return (-1);
+	}
+	return (vars->lastreturn);
 }
 
 
@@ -224,6 +250,12 @@ int	ft_printf(const char *str, ...)
 	return (vars.printcount);
 }
 
-// The basic function is ft_print_char which basically prints single char
-// and handles errors and final length to be returned.
+// The main function is ft_print_char which basically prints single char
+// and handles errors and final length to be returned by ft_printf.
+//
+// The aim was to make the code modular (within my actual capacities),
+// not repeating code so if a change needs to be done,
+// it can be done in a single place.
+// Another goal was make things more human-readable. Using NULL,
+// macros like STDOUT_FILENO, etc. instead of bare numbers, for example.
 
