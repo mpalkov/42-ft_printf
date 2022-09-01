@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 16:00:28 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/23 16:34:24 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/01 12:38:07 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putchar(char c)
 {
-	return (ft_putchar(c, STDOUT_FILENO));
+	return (ft_putchar_fd(c, STDOUT_FILENO));
 }
