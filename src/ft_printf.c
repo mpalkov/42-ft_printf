@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/08/31 17:15:34 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/01 14:56:45 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,13 @@ int	ft_pf_s(t_vars *vars)
 
 	i = 0;
 	s = va_arg(vars->args, char *);
+	if (!s)
+	{
+		if (ft_print_str(vars, "(null)") == -1)
+			return (-1);
+		else
+			return (vars->lastreturn);
+	}
 	while (s[i])
 	{
 		if (ft_print_char(vars, s[i]) == -1)
@@ -141,7 +148,7 @@ int	ft_print_HEX_case(t_vars *vars, long nbr)
 		else
 		{
 			// vars->caseflag is char 'A' or 'a' so I can use it directly 
-			if (ft_print_char(vars, vars->caseflag + nbr - 10))
+			if (ft_print_char(vars, vars->caseflag + nbr - 10) == -1)
 				return (-1);
 		}
 	}
