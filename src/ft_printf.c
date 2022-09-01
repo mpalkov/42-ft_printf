@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/01 14:56:45 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/01 16:48:25 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 int	ft_print_unsint(t_vars *vars, long nbr);
-int	ft_print_HEX_case(t_vars *vars, long nbr);
+int	ft_print_HEX_case(t_vars *vars, unsigned long long nbr);
 int	ft_putchar(char c);
 
 int	ft_print_char(t_vars *vars, char c)
@@ -123,17 +123,16 @@ int	ft_pf_x(t_vars *vars)
 {
 	long	nbr;
 
-	nbr = va_arg(vars->args, long);
+	nbr = va_arg(vars->args, unsigned long long);
 	if (ft_print_HEX_case(vars, nbr) == -1)
 		return (-1);
 
 	return(vars->lastreturn);
 }	
 
-int	ft_print_HEX_case(t_vars *vars, long nbr)
+int	ft_print_HEX_case(t_vars *vars, unsigned long long nbr)
 {
-
-	if (nbr > 16)
+	if (nbr >= 16)
 	{
 		ft_print_HEX_case(vars, nbr / 16);
 		ft_print_HEX_case(vars, nbr % 16);
@@ -157,9 +156,9 @@ int	ft_print_HEX_case(t_vars *vars, long nbr)
 
 int	ft_pf_p(t_vars *vars)
 {
-	long	nbr;
+	unsigned long long	nbr;
 
-	nbr  = va_arg(vars->args, long);
+	nbr  = va_arg(vars->args, unsigned long long);
 	if (nbr == 0)
 	{
 		if (ft_print_str(vars, "0x0") == -1)
