@@ -6,7 +6,7 @@
 #    By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 12:42:00 by mpalkov           #+#    #+#              #
-#    Updated: 2022/08/31 17:05:41 by mpalkov          ###   ########.fr        #
+#    Updated: 2022/09/02 13:56:08 by mpalkov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,6 @@ all: make_libft $(NAME)
 make_libft:
 	make -C $(LIBFT_DIR)
 
-
-
 $(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
@@ -75,7 +73,7 @@ $(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 #$(NAME):$(OBJ) ft_printf.h $(LIB)
 #	ar -crs $(NAME) $(OBJ)
 
-$(NAME): $(OBJ) $(LIBFT)
+$(NAME): $(OBJ) $(LIBFT) $(INCL_DIR)/ft_printf.h
 	$(CP) $(LIBFT) ./$(NAME)
 	ar -crs $(NAME) $(OBJ)
 

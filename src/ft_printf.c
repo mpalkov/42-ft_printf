@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/01 16:48:25 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/02 17:16:27 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../libft/libft.h"
 #include <unistd.h>
 #include <stdio.h>
+#include <limits.h>
 
 int	ft_print_unsint(t_vars *vars, long nbr);
 int	ft_print_HEX_case(t_vars *vars, unsigned long long nbr);
@@ -121,7 +122,7 @@ int ft_print_unsint(t_vars *vars, long nbr)
 
 int	ft_pf_x(t_vars *vars)
 {
-	long	nbr;
+	unsigned long long	nbr;
 
 	nbr = va_arg(vars->args, unsigned long long);
 	if (ft_print_HEX_case(vars, nbr) == -1)
@@ -132,6 +133,8 @@ int	ft_pf_x(t_vars *vars)
 
 int	ft_print_HEX_case(t_vars *vars, unsigned long long nbr)
 {
+	if (nbr < 0)
+		nbr = UINT_MAX + nbr + 1;
 	if (nbr >= 16)
 	{
 		ft_print_HEX_case(vars, nbr / 16);
