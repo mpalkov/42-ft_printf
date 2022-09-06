@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/06 15:58:36 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/06 17:09:05 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,8 +137,10 @@ int	ft_print_HEX_case(t_vars *vars, unsigned long long nbr)
 //		nbr = UINT_MAX + nbr + 1;
 	if (nbr >= 16)
 	{
-		ft_print_HEX_case(vars, nbr / 16);
-		ft_print_HEX_case(vars, nbr % 16);
+		if (ft_print_HEX_case(vars, nbr / 16) == -1)
+			return (-1);
+		if (ft_print_HEX_case(vars, nbr % 16) == -1)
+			return (-1);
 	}
 	else
 	{
@@ -267,4 +269,3 @@ int	ft_printf(const char *str, ...)
 // it can be done in a single place.
 // Another goal was make things more human-readable. Using NULL,
 // macros like STDOUT_FILENO, etc. instead of bare numbers, for example.
-
