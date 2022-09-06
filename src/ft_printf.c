@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/02 17:16:27 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/06 15:58:36 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,10 @@ int ft_print_unsint(t_vars *vars, long nbr)
 
 int	ft_pf_x(t_vars *vars)
 {
-	unsigned long long	nbr;
+	unsigned int	nbr;
 
-	nbr = va_arg(vars->args, unsigned long long);
-	if (ft_print_HEX_case(vars, nbr) == -1)
+	nbr = va_arg(vars->args, unsigned int);
+	if (ft_print_HEX_case(vars, (unsigned long long)nbr) == -1)
 		return (-1);
 
 	return(vars->lastreturn);
@@ -133,8 +133,8 @@ int	ft_pf_x(t_vars *vars)
 
 int	ft_print_HEX_case(t_vars *vars, unsigned long long nbr)
 {
-	if (nbr < 0)
-		nbr = UINT_MAX + nbr + 1;
+//	if (nbr < 0)
+//		nbr = UINT_MAX + nbr + 1;
 	if (nbr >= 16)
 	{
 		ft_print_HEX_case(vars, nbr / 16);
@@ -147,9 +147,9 @@ int	ft_print_HEX_case(t_vars *vars, unsigned long long nbr)
 			if (ft_print_char(vars, '0' + nbr) == -1)
 				return (-1);
 		}
-		else
+		else if (nbr <= 15)
 		{
-			// vars->caseflag is char 'A' or 'a' so I can use it directly 
+			// vars->caseflag is char 'a' or 'A' so I can use the  same funcion for %x and %X
 			if (ft_print_char(vars, vars->caseflag + nbr - 10) == -1)
 				return (-1);
 		}
