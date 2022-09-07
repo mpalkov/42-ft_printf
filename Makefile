@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/31 12:42:00 by mpalkov           #+#    #+#              #
-#    Updated: 2022/09/02 13:56:08 by mpalkov          ###   ########.fr        #
+#    Created: 2022/09/07 16:12:00 by mpalkov           #+#    #+#              #
+#    Updated: 2022/09/07 17:26:03 by mpalkov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT_DIR	=	libft/
 
 OBJ_DIR		=	obj/
 
-INCL_DIR	=	includes
+INCL_DIR	=	includes/
 
 SRC_DIR		=	src/
 
@@ -38,15 +38,13 @@ OBJ			=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
 INCLUDE		=	-I$(INCL_DIR)
 
-#OBJ		=	$(SRCS:%.c=%.o)
+DEPS		=	$(addsuffix .d,$(basename $(OBJ)))
 
-DEPS		=	$(addsuffix .d,$(basename $(OBJS)))
-
-SRCS		+=	$(addprefix $(SRC_DIR),$(SRC_PRINTF))
+SRCS		=	$(addprefix $(SRC_DIR),$(SRC_PRINTF))
 
 # ---- COMMANDS  ---------------------------------------------------------------
 
-DEPS		=	$(SRCS:%.c=%.d)
+# DEPS		=	$(SRCS:%.c=%.d)
 
 CC			=	gcc
 
@@ -58,9 +56,6 @@ CP			=	cp -f
 
 # ---- RULES -------------------------------------------------------------------
 
-#%.o: %.c
-#	$(CC) $(CFLAGS) -I. -c $< -o $@
-
 all: make_libft $(NAME)
 
 make_libft:
@@ -70,23 +65,19 @@ $(OBJ_DIR)%.o: $(SRCS_DIR)%.c
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-#$(NAME):$(OBJ) ft_printf.h $(LIB)
-#	ar -crs $(NAME) $(OBJ)
-
-$(NAME): $(OBJ) $(LIBFT) $(INCL_DIR)/ft_printf.h
+-include $(DEPS)
+$(NAME): $(OBJ) $(LIBFT) $(INCL_DIR)
 	$(CP) $(LIBFT) ./$(NAME)
 	ar -crs $(NAME) $(OBJ)
 
 clean:
 	make clean -C $(LIBFT_DIR)
-	$(RM) -r $(OBJ_DIR) $(DEPS)
+	$(RM) -r $(OBJ_DIR)
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
 	$(RM) $(NAME)
 
 re: fclean all
-
--include $(DEPS)
 
 .PHONY: all, clean, fclean, re
