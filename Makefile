@@ -6,7 +6,7 @@
 #    By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 16:12:00 by mpalkov           #+#    #+#              #
-#    Updated: 2022/09/08 12:17:31 by mpalkov          ###   ########.fr        #
+#    Updated: 2022/09/08 15:30:59 by mpalkov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,13 +14,11 @@ NAME		=	libftprintf.a
 
 # ---- FILES -------------------------------------------------------------------
 
-SRC_PRINTF	=	ft_printf.c
-#			utils/ft_putchar.c \
-#			utils/ft_putchar_fd.c \
-#			utils/ft_strchr.c \
-			
-#			utils/libft.h
-#			includes/ft_printf.h
+SRC_PRINTF	=	ft_printf.c 
+
+UTLS_PRINTF	=	ft_printf_char_functions.c \
+				ft_printf_num_functions.c \
+				ft_printf_hex_ptr_functions.c
 
 # ---- DIRECTORIES -------------------------------------------------------------
 
@@ -32,19 +30,9 @@ INCL_DIR	=	includes/
 
 SRC_DIR		=	src/
 
-LIBFT		=	$(LIBFT_DIR)libft.a
-
-OBJ			=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
-
-INCLUDE		=	-I$(INCL_DIR)
-
-DEPS		=	$(addsuffix .d, $(basename $(OBJ)))
-
-SRCS		=	$(addprefix $(SRC_DIR), $(SRC_PRINTF))
+UTLS_DIR	=	utils/
 
 # ---- COMMANDS  ---------------------------------------------------------------
-
-# DEPS		=	$(SRCS:%.c=%.d)
 
 CC			=	gcc
 
@@ -55,6 +43,20 @@ RM			=	rm -f
 CP			=	cp -f
 
 # ---- RULES -------------------------------------------------------------------
+
+LIBFT		=	$(LIBFT_DIR)libft.a
+
+OBJ			=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
+
+INCLUDE		=	-I$(INCL_DIR)
+
+DEPS		=	$(addsuffix .d,$(basename $(OBJ)))
+
+UTLS		=	$(addprefix $(UTLS_DIR),$(UTLS_PRINTF))
+
+SRCS		+=	$(addprefix $(SRC_DIR),$(SRC_PRINTF))
+
+SRCS		+=	$(addprefix $(UTLS_DIR),$(UTLS_PRINTF))
 
 all: make_libft $(NAME)
 
