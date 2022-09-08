@@ -6,7 +6,7 @@
 #    By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 16:12:00 by mpalkov           #+#    #+#              #
-#    Updated: 2022/09/07 17:26:03 by mpalkov          ###   ########.fr        #
+#    Updated: 2022/09/08 12:17:31 by mpalkov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,9 @@ OBJ			=	$(addprefix $(OBJ_DIR), $(SRCS:.c=.o))
 
 INCLUDE		=	-I$(INCL_DIR)
 
-DEPS		=	$(addsuffix .d,$(basename $(OBJ)))
+DEPS		=	$(addsuffix .d, $(basename $(OBJ)))
 
-SRCS		=	$(addprefix $(SRC_DIR),$(SRC_PRINTF))
+SRCS		=	$(addprefix $(SRC_DIR), $(SRC_PRINTF))
 
 # ---- COMMANDS  ---------------------------------------------------------------
 
