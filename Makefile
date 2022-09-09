@@ -6,7 +6,7 @@
 #    By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/07 16:12:00 by mpalkov           #+#    #+#              #
-#    Updated: 2022/09/08 15:30:59 by mpalkov          ###   ########.fr        #
+#    Updated: 2022/09/09 15:54:30 by mpalkov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,15 @@ NAME		=	libftprintf.a
 
 # ---- FILES -------------------------------------------------------------------
 
-SRC_PRINTF	=	ft_printf.c 
+SRC_PRINTF	=	ft_printf.c
+
+SRC_BONUS	=	ft_printf_bonus.c
 
 UTLS_PRINTF	=	ft_printf_char_functions.c \
 				ft_printf_num_functions.c \
 				ft_printf_hex_ptr_functions.c
+
+UTLS_BONUS	=	ft_printf_utils_bonus.c
 
 # ---- DIRECTORIES -------------------------------------------------------------
 
@@ -56,14 +60,28 @@ UTLS		=	$(addprefix $(UTLS_DIR),$(UTLS_PRINTF))
 
 SRCS		+=	$(addprefix $(SRC_DIR),$(SRC_PRINTF))
 
-SRCS		+=	$(addprefix $(UTLS_DIR),$(UTLS_PRINTF))
+#SRCS		+=	$(addprefix $(UTLS_DIR),$(UTLS_PRINTF))
+SRCS		+=	$(UTLS)
+
+SRCS_BONUS	+=	$(SRCS)
+
+SRCS_BONUS	+=	$(addprefix $(SRC_DIR),$(SRC_BONUS))
+
+SRCS_BONUS	+=	$(addprefix $(UTLS_DIR),$(UTLS_BONUS))
 
 all: make_libft $(NAME)
+
+
+
+bonus:
+ACABAR DE DEFINIR ESTO
+
+
 
 make_libft:
 	make -C $(LIBFT_DIR)
 
-$(OBJ_DIR)%.o: $(SRCS_DIR)%.c
+$(OBJ_DIR)%.o: $(SRCS_DIR)%.c Makefile
 	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 

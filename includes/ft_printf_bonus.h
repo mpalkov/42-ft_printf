@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/09 14:56:53 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/09/09 12:48:34 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/09/09 15:06:28 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
@@ -47,5 +47,7 @@ int			ft_pf_u(t_vars *vars);
 
 int			ft_pf_x(t_vars *vars);
 int			ft_pf_p(t_vars *vars);
+
+int			ft_flagcheck(t_vars *vars);
 
 #endif

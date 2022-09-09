@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/11 14:38:21 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/09 15:03:02 by mpalkov          ###   ########.fr       */
+/*   Created: 2022/09/09 12:42:46 by mpalkov           #+#    #+#             */
+/*   Updated: 2022/09/09 15:06:18 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "../includes/ft_printf_bonus.h"
 
 static int	ft_printcheck(t_vars *vars)
 {
@@ -52,6 +52,9 @@ static int	ft_gothrough(t_vars *vars)
 			return (-1);
 		else if (vars->strn[vars->pos_s] == '%' && vars->format)
 		{
+			// This part is of bonus
+			if (ft_flagcheck(vars) == -1)
+				return (-1);
 			if (ft_printcheck(vars) == -1)
 				return (-1);
 			vars->pos_s++;
