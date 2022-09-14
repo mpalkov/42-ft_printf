@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/23 13:54:18 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/09 14:56:53 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/14 13:13:06 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 # include <stdarg.h>
 
 # define VALIDFORMAT "cspdiuxX% +#"
-# define HEXFLAGS "#"
-# define DECFLAGS " +"
 
 typedef struct s_vars
 {

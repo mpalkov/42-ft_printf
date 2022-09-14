@@ -6,40 +6,11 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 14:53:04 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/09 15:54:33 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/12 11:44:38 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf_bonus.h"
-
-int	ft_flagcheck(t_vars *vars)
-{
-	if (*vars->format == '#' && (vars->strn[vars->pos_s + 2] == 'x'))
-	{
-		vars->caseflag = 'a';
-		return (ft_print_hex_bonus(vars));
-	}
-	else if (*vars->format == '#' && (vars->strn[vars->pos_s + 2] == 'X'))
-	{
-		vars->caseflag = 'A';
-		return (ft_print_hex_bonus(vars));
-	}
-	else if (*vars->format == ' ' && (vars->strn[vars->pos_s + 2] == 'd' \
-				|| vars->strn[vars->pos_s + 2] == 'i'))
-		return (ft_print__d(vars));
-	else if (*vars->format == '+' && (vars->strn[vars->pos_s + 2] == 'd' \
-				|| vars->strn[vars->pos_s + 2] == 'i'))
-		return (ft_print_plus_d(vars));
-	else if ((*vars->format == ' ' && vars->strn[vars->pos_s + 2] == '+' && \
-			vars->strn[vars->pos_s + 3] == 'd') || (*vars->format == ' ' && \
-			vars->strn[vars->pos_s + 2] == '+' && vars->strn[vars->pos_s + 3] \
-			== 'i') || (*vars->format == '+' && vars->strn[vars->pos_s + 2] == \
-			' ' && vars->strn[vars->pos_s + 3] == 'd') || (*vars->format == '+' \
-			&& vars->strn[vars->pos_s + 2] == ' ' \
-			&& vars->strn[vars->pos_s + 3] == 'i'))
-		return (ft_print_plus_d(vars));
-	return (vars->lastreturn);
-}
 
 int	ft_print_hex_bonus(t_vars *vars)
 {

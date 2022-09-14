@@ -6,11 +6,51 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/09 12:42:46 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/09 15:06:18 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/14 14:17:07 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/ft_printf.h"
 #include "../includes/ft_printf_bonus.h"
+#include <stdio.h>
+
+static int	ft_flagcheck(t_vars *vars)
+{
+	if (*vars->format == '#' && (vars->strn[vars->pos_s + 2] == 'x'))
+	{
+		vars->caseflag = 'a';
+		return (ft_print_hex_bonus(vars));
+		vars->pos_s += 2;
+	}
+	else if (*vars->format == '#' && (vars->strn[vars->pos_s + 2] == 'X'))
+	{
+		vars->caseflag = 'A';
+		return (ft_print_hex_bonus(vars));
+		vars->pos_s += 100;
+	}
+	else if (*vars->format == ' ' && (vars->strn[vars->pos_s + 2] == 'd' \
+				|| vars->strn[vars->pos_s + 2] == 'i'))
+	{
+		printf("\n_d detected\n");
+		return (ft_print__d(vars));
+		vars->pos_s += 2;
+	}
+	else if (*vars->format == '+' && (vars->strn[vars->pos_s + 2] == 'd' \
+				|| vars->strn[vars->pos_s + 2] == 'i'))
+	{
+		return (ft_print_plus_d(vars));
+		vars->pos_s += 2;
+	}
+	else if ((*vars->format == ' ' && vars->strn[vars->pos_s + 2] == '+' && \
+			vars->strn[vars->pos_s + 3] == 'd') || (*vars->format == ' ' && \
+			vars->strn[vars->pos_s + 2] == '+' && vars->strn[vars->pos_s + 3] \
+			== 'i') || (*vars->format == '+' && vars->strn[vars->pos_s + 2] == \
+			' ' && vars->strn[vars->pos_s + 3] == 'd') || (*vars->format == '+' \
+			&& vars->strn[vars->pos_s + 2] == ' ' \
+			&& vars->strn[vars->pos_s + 3] == 'i'))
+		return (ft_print_plus_d(vars));
+	return (vars->lastreturn);
+}
 
 static int	ft_printcheck(t_vars *vars)
 {
@@ -57,7 +97,8 @@ static int	ft_gothrough(t_vars *vars)
 				return (-1);
 			if (ft_printcheck(vars) == -1)
 				return (-1);
-			vars->pos_s++;
+			else
+				vars->pos_s++;
 		}
 		else if (vars->strn[vars->pos_s] != '%')
 		{
