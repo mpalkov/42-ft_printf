@@ -6,7 +6,7 @@
 /*   By: mpalkov <mpalkov@student.42barcelo>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 13:03:26 by mpalkov           #+#    #+#             */
-/*   Updated: 2022/09/08 13:24:15 by mpalkov          ###   ########.fr       */
+/*   Updated: 2022/09/15 12:10:25 by mpalkov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_print_char(t_vars *vars, char c)
 {
-	vars->lastreturn = ft_putchar (c);
+	vars->lastreturn = ft_putchar(c);
 	if (vars->lastreturn == -1)
 		return (-1);
 	else
